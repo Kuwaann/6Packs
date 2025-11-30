@@ -1,5 +1,6 @@
 import 'package:aplikasi_6packs/splash_screen.dart';
 import 'package:aplikasi_6packs/views/akun_page.dart';
+import 'package:aplikasi_6packs/views/berita_page.dart';
 import 'package:aplikasi_6packs/views/detail_latihan_page.dart';
 import 'package:aplikasi_6packs/views/edit_akun_page.dart';
 import 'package:aplikasi_6packs/views/home_page.dart';
@@ -7,6 +8,7 @@ import 'package:aplikasi_6packs/views/latihan_page.dart';
 import 'package:aplikasi_6packs/views/login_page.dart';
 import 'package:aplikasi_6packs/views/main_page.dart';
 import 'package:aplikasi_6packs/views/paket_latihan_page.dart';
+import 'package:aplikasi_6packs/views/question_page.dart';
 import 'package:aplikasi_6packs/views/register_page.dart';
 import 'package:aplikasi_6packs/views/welcome_page.dart';
 import 'package:flutter/material.dart';
@@ -27,16 +29,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.interTextTheme(),
         textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: Colors.white, 
-        selectionColor: Colors.white, 
-        selectionHandleColor: Colors.white, 
-    ),
+          cursorColor: Colors.white,
+          selectionColor: Colors.white,
+          selectionHandleColor: Colors.white,
+        ),
       ),
       routes: {
         '/': (context) => SplashScreen(),
         '/welcome': (context) => WelcomePage(),
         '/main': (context) => MainPage(),
+        '/berita': (context) => BeritaPage(),
         '/daftar': (context) => RegisterPage(),
+        '/pertanyaan': (context) => QuestionPage(),
         '/masuk': (context) => LoginPage(),
         '/akun': (context) => AkunPage(),
         '/edit-akun': (context) => EditAkunPage(),
@@ -48,5 +52,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

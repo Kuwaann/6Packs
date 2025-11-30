@@ -33,98 +33,88 @@ class _BeritaPageState extends State<BeritaPage> {
 
       /// Custom AppBar
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
         centerTitle: true,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
-        title: Text(
-          "Berita",
-          style: TextStyle(
-            fontSize: 15,
-          ),
-        ),
+        title: Text("Berita", style: TextStyle(fontSize: 15)),
       ),
 
       body: SingleChildScrollView(
         physics: ClampingScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 20,
-            children: [
-              SizedBox(height: 20),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: newsList.length,
-                separatorBuilder: (context, index) => SizedBox(height: 20),
-                itemBuilder: (context, index) {
-                  final item = newsList[index];
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 10,
+          children: [
+            SizedBox(height: 10),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: newsList.length,
+              separatorBuilder: (context, index) => SizedBox(height: 10),
+              itemBuilder: (context, index) {
+                final item = newsList[index];
 
-                  return InkWell(
-                    onTap: () {},
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.07),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Colors.white.withOpacity(0.1),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        spacing: 20,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          /// Thumbnail
-                          Container(
-                            width: 80,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.2),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-
-                          /// Berita
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              spacing: 8,
-                              children: [
-                                Text(
-                                  item["title"]!,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                Text(
-                                  item["desc"]!,
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.8),
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                return InkWell(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.white.withOpacity(0.08),
+                        width: 1,
                       ),
                     ),
-                  );
-                },
-              ),
+                    child: Row(
+                      spacing: 20,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        /// Thumbnail
+                        Container(
+                          width: 80,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
 
-              SizedBox(height: 40),
-            ],
-          ),
+                        /// Berita
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            spacing: 8,
+                            children: [
+                              Text(
+                                item["title"]!,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              Text(
+                                item["desc"]!,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.8),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+
+            SizedBox(height: 40),
+          ],
         ),
       ),
     );

@@ -18,19 +18,17 @@ class _RegisterPageState extends State<RegisterPage> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
-        title: Text(
-          "Daftar",
-          style: TextStyle(
-            fontSize: 15,
-          ),
-        ),
+        title: Text("Daftar", style: TextStyle(fontSize: 15)),
       ),
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.07),
           border: Border.all(color: Colors.white.withOpacity(0.08)),
-          borderRadius: BorderRadius.circular(60),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(60),
+            topRight: Radius.circular(60),
+          ),
         ),
         child: Column(
           children: [
@@ -49,36 +47,38 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Text(
                         "Username",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        )
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       TextFormField(
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white.withOpacity(0.02),
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           disabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16
-                        ),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ],
                   ),
@@ -89,36 +89,38 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Text(
                         "Email",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        )
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       TextFormField(
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white.withOpacity(0.02),
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           disabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16
-                        ),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ],
                   ),
@@ -129,10 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Text(
                         "Password",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        )
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       TextFormField(
                         obscureText: true,
@@ -140,40 +139,45 @@ class _RegisterPageState extends State<RegisterPage> {
                           filled: true,
                           fillColor: Colors.white.withOpacity(0.02),
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           disabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white.withOpacity(0.04)),
-                            borderRadius: BorderRadius.circular(15)
+                            borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0.04),
+                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16
-                        ),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
-                    ], 
+                    ],
                   ),
                   Container(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: (){
-                        Navigator.pushNamed(context, '/daftar');
-                      }, 
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/pertanyaan');
+                      },
                       style: ElevatedButton.styleFrom(
                         shadowColor: Colors.transparent,
                         elevation: 0,
-                        backgroundColor: Color(0xFF620000)
+                        backgroundColor: Color(0xFF620000),
                       ),
                       child: Text(
                         "Buat Akun Baru",
@@ -181,7 +185,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Colors.white,
                           fontWeight: FontWeight.w700,
                         ),
-                      )
+                      ),
                     ),
                   ),
                   Row(
@@ -189,13 +193,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Text(
                         "Sudah Punya Akun?",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ) ,
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Navigator.pushReplacementNamed(context, '/masuk');
                         },
                         child: Text(
@@ -203,11 +204,11 @@ class _RegisterPageState extends State<RegisterPage> {
                           style: TextStyle(
                             color: Color(0xFFE40000),
                             fontSize: 16,
-                          ) ,
+                          ),
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

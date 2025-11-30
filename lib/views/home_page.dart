@@ -53,10 +53,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Text(
                     "Halo, {user}!",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ],
               ),
@@ -85,16 +82,17 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             GestureDetector(
-                              child: Icon(Icons.edit, color: Colors.white, size: 20)
+                              child: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                                size: 20,
+                              ),
                             ),
                           ],
                         ),
                         Text(
                           "0/3",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
+                          style: TextStyle(color: Colors.white, fontSize: 12),
                         ),
                       ],
                     ),
@@ -104,71 +102,141 @@ class _HomePageState extends State<HomePage> {
                         Expanded(
                           flex: 1,
                           child: Container(
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                             ),
-                            child: Text(""),
+                            child: Center(
+                              child: Text(
+                                "1",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
                           flex: 1,
                           child: Container(
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                             ),
-                            child: Text(""),
+                            child: Center(
+                              child: Text(
+                                "2",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
                           flex: 1,
                           child: Container(
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                             ),
-                            child: Text(""),
+                            child: Center(
+                              child: Text(
+                                "3",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
                           flex: 1,
                           child: Container(
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                             ),
-                            child: Text(""),
+                            child: Center(
+                              child: Text(
+                                "4",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
                           flex: 1,
                           child: Container(
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                             ),
-                            child: Text(""),
+                            child: Center(
+                              child: Text(
+                                "5",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
                           flex: 1,
                           child: Container(
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                             ),
-                            child: Text(""),
+                            child: Center(
+                              child: Text(
+                                "6",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
                           flex: 1,
                           child: Container(
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                             ),
-                            child: Text(""),
+                            child: Center(
+                              child: Text(
+                                "7",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -189,8 +257,8 @@ class _HomePageState extends State<HomePage> {
                       colors: [
                         Color(0xFF470000),
                         Color(0xFFDE0000),
-                        Color(0xFFFF3A3A)
-                      ]
+                        Color(0xFFFF3A3A),
+                      ],
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -202,7 +270,7 @@ class _HomePageState extends State<HomePage> {
                         bottom: 60,
                         child: Image.asset(
                           "assets/images/onedayordayone.png",
-                          fit: BoxFit.cover
+                          fit: BoxFit.cover,
                         ),
                       ),
                       Container(
@@ -237,13 +305,21 @@ class _HomePageState extends State<HomePage> {
                               width: double.infinity,
                               height: 50,
                               child: ElevatedButton(
-                                onPressed: (){
-                                  Navigator.pushNamed(context, '/paket-latihan');
-                                }, 
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    '/paket-latihan',
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
                                   shadowColor: Colors.transparent,
                                   elevation: 0,
-                                  backgroundColor: Color.fromARGB(255, 255, 255, 255)
+                                  backgroundColor: Color.fromARGB(
+                                    255,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
                                 ),
                                 child: Text(
                                   "Mulai Sekarang",
@@ -251,7 +327,7 @@ class _HomePageState extends State<HomePage> {
                                     color: const Color.fromARGB(255, 0, 0, 0),
                                     fontWeight: FontWeight.w700,
                                   ),
-                                )
+                                ),
                               ),
                             ),
                           ],
@@ -267,19 +343,46 @@ class _HomePageState extends State<HomePage> {
                   spacing: 20,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Berita Kesehatan Terbaru",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Berita Terbaru",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushReplacementNamed(context, '/berita');
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                "Lihat Semua",
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.5),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              Icon(
+                                Icons.chevron_right_rounded,
+                                color: Colors.white.withOpacity(0.5),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                     Column(
                       spacing: 20,
                       children: [
                         InkWell(
-                          onTap: (){},
+                          onTap: () {},
                           borderRadius: BorderRadius.circular(20),
                           child: Row(
                             spacing: 20,
@@ -290,7 +393,7 @@ class _HomePageState extends State<HomePage> {
                                 height: 80,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               Expanded(
@@ -318,12 +421,12 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
                         InkWell(
-                          onTap: (){},
+                          onTap: () {},
                           borderRadius: BorderRadius.circular(20),
                           child: Row(
                             spacing: 20,
@@ -334,7 +437,7 @@ class _HomePageState extends State<HomePage> {
                                 height: 80,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               Expanded(
@@ -362,12 +465,12 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
                         InkWell(
-                          onTap: (){},
+                          onTap: () {},
                           borderRadius: BorderRadius.circular(20),
                           child: Row(
                             spacing: 20,
@@ -378,7 +481,7 @@ class _HomePageState extends State<HomePage> {
                                 height: 80,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               Expanded(
@@ -406,12 +509,12 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
