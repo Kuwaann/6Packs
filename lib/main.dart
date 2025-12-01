@@ -8,6 +8,7 @@ import 'package:aplikasi_6packs/views/latihan_page.dart';
 import 'package:aplikasi_6packs/views/login_page.dart';
 import 'package:aplikasi_6packs/views/main_page.dart';
 import 'package:aplikasi_6packs/views/paket_latihan_page.dart';
+import 'package:aplikasi_6packs/views/password_page.dart';
 import 'package:aplikasi_6packs/views/question_page.dart';
 import 'package:aplikasi_6packs/views/register_page.dart';
 import 'package:aplikasi_6packs/views/welcome_page.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         '/masuk': (context) => LoginPage(),
         '/akun': (context) => AkunPage(),
         '/edit-akun': (context) => EditAkunPage(),
+        '/password': (context) => PasswordPage(),
         '/paket-latihan': (context) => PaketLatihanPage(),
         '/detail-latihan': (context) => DetailLatihanPage(),
         '/latihan': (context) => LatihanPage(),

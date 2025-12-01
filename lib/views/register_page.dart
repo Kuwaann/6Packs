@@ -49,36 +49,39 @@ class _RegisterPageState extends State<RegisterPage> {
                         "Username",
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white.withOpacity(0.02),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                      SizedBox(
+                        height: 50,
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.02),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          disabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                            disabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
                           ),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
-                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ],
                   ),
@@ -91,36 +94,39 @@ class _RegisterPageState extends State<RegisterPage> {
                         "Email",
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white.withOpacity(0.02),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                      SizedBox(
+                        height: 50,
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.02),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          disabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                            disabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
                           ),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
-                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ],
                   ),
@@ -133,37 +139,40 @@ class _RegisterPageState extends State<RegisterPage> {
                         "Password",
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
-                      TextFormField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white.withOpacity(0.02),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                      SizedBox(
+                        height: 50,
+                        child: TextFormField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.02),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          disabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                            disabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white.withOpacity(0.04),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.04),
+                              ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
                           ),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
-                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ],
                   ),

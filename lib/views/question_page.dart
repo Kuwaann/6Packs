@@ -1,4 +1,5 @@
 import 'package:aplikasi_6packs/views/berat_tinggi_badan_page.dart';
+import 'package:aplikasi_6packs/views/rencana_page.dart';
 import 'package:aplikasi_6packs/views/seberapaaktif_page.dart';
 import 'package:aplikasi_6packs/views/tipe_badan_page.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +18,13 @@ class _QuestionPageState extends State<QuestionPage> {
     TipeBadanPage(),
     BeratTinggiBadanPage(),
     SeberapaAktifPage(),
+    RencanaPage(),
   ];
 
   List<String> pagesTitle = [
     "Pilih Tipe Perut Anda",
     "Berat dan Tinggi Badan",
+    "Rencana Latihan",
     "Rencana Latihan",
   ];
 
@@ -73,7 +76,7 @@ class _QuestionPageState extends State<QuestionPage> {
                             (MediaQuery.of(context).size.width -
                                 80) // lebar max
                             *
-                            ((currentPagesIndex + 1) / 3), // progress
+                            ((currentPagesIndex + 1) / 4), // progress
                         decoration: BoxDecoration(
                           color: Color(0xFF910303),
                           borderRadius: BorderRadius.circular(4),
@@ -95,10 +98,16 @@ class _QuestionPageState extends State<QuestionPage> {
           height: 50,
           child: ElevatedButton(
             onPressed: () {
-              if (currentPagesIndex < 2) {
+              if (currentPagesIndex < 3) {
                 setState(() {
                   currentPagesIndex++;
                 });
+              } else {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/main',
+                  (Route<dynamic> route) => false,
+                );
               }
             },
             style: ElevatedButton.styleFrom(

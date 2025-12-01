@@ -19,12 +19,7 @@ class _AkunPageState extends State<AkunPage> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
-        title: Text(
-          "Profil Saya",
-          style: TextStyle(
-            fontSize: 15,
-          ),
-        ),
+        title: Text("Profil Saya", style: TextStyle(fontSize: 15)),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -74,14 +69,15 @@ class _AkunPageState extends State<AkunPage> {
                               ),
                             ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                     IconButton(
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.pushNamed(context, '/edit-akun');
-                      }, 
-                      icon: Icon(Icons.edit_outlined, color: Colors.white))
+                      },
+                      icon: Icon(Icons.edit_outlined, color: Colors.white),
+                    ),
                   ],
                 ),
               ),
@@ -136,7 +132,10 @@ class _AkunPageState extends State<AkunPage> {
                             Row(
                               spacing: 20,
                               children: [
-                                Icon(Icons.notifications_outlined, color: Colors.white),
+                                Icon(
+                                  Icons.notifications_outlined,
+                                  color: Colors.white,
+                                ),
                                 Text(
                                   "Notifikasi",
                                   style: TextStyle(
@@ -150,26 +149,37 @@ class _AkunPageState extends State<AkunPage> {
                             Icon(Icons.chevron_right, color: Colors.white),
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Row(
-                              spacing: 20,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/password');
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.lock_outline_rounded, color: Colors.white),
-                                Text(
-                                  "Ganti Password",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
-                                  ),
+                                Row(
+                                  spacing: 20,
+                                  children: [
+                                    Icon(
+                                      Icons.lock_outline_rounded,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      "Ganti Password",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                Icon(Icons.chevron_right, color: Colors.white),
                               ],
                             ),
-                            Icon(Icons.chevron_right, color: Colors.white),
-                          ],
+                          ),
                         ),
                       ],
                     ),
@@ -206,7 +216,10 @@ class _AkunPageState extends State<AkunPage> {
                             Row(
                               spacing: 20,
                               children: [
-                                Icon(Icons.question_answer, color: Colors.white),
+                                Icon(
+                                  Icons.question_answer,
+                                  color: Colors.white,
+                                ),
                                 Text(
                                   "FAQ",
                                   style: TextStyle(
@@ -253,9 +266,7 @@ class _AkunPageState extends State<AkunPage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: InkWell(
-                  onTap: (){
-
-                  },
+                  onTap: () {},
                   borderRadius: BorderRadius.circular(10),
                   child: Padding(
                     padding: const EdgeInsets.all(20),
@@ -277,7 +288,7 @@ class _AkunPageState extends State<AkunPage> {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
