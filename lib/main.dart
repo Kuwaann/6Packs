@@ -47,7 +47,10 @@ class MyApp extends StatelessWidget {
         '/edit-akun': (context) => EditAkunPage(),
         '/password': (context) => PasswordPage(),
         '/paket-latihan': (context) => PaketLatihanPage(),
-        '/detail-latihan': (context) => DetailLatihanPage(),
+        '/detail-latihan': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments as Map;
+          return DetailLatihanPage(paket: args["paket"]);
+        },
         '/latihan': (context) => LatihanPage(),
       },
       initialRoute: '/',
