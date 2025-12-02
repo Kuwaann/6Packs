@@ -17,21 +17,25 @@ class _HomePageState extends State<HomePage> {
   // Data Rencana Mingguan
   int weeklyTarget = 3; // Default
   int completedCount = 0;
-  List<int> completedDays = []; // List hari yang sudah selesai (1=Senin, 7=Minggu)
+  List<int> completedDays =
+      []; // List hari yang sudah selesai (1=Senin, 7=Minggu)
 
   // Data Dummy Berita
   final List<Map<String, String>> newsList = [
     {
       "title": "Tips Menjaga Kesehatan di Rumah",
-      "desc": "Menjaga kesehatan dimulai dari kebiasaan kecil sehari-hari. Simak tips berikut untuk tetap sehat meski sibuk.",
+      "desc":
+          "Menjaga kesehatan dimulai dari kebiasaan kecil sehari-hari. Simak tips berikut untuk tetap sehat meski sibuk.",
     },
     {
       "title": "Manfaat Olahraga Setiap Pagi",
-      "desc": "Olahraga pagi memberi energi untuk beraktivitas, meningkatkan metabolisme, dan memperbaiki mood.",
+      "desc":
+          "Olahraga pagi memberi energi untuk beraktivitas, meningkatkan metabolisme, dan memperbaiki mood.",
     },
     {
       "title": "Makanan Tinggi Protein yang Murah",
-      "desc": "Tidak harus mahal untuk makan sehat. Berikut daftar makanan tinggi protein yang ramah dompet.",
+      "desc":
+          "Tidak harus mahal untuk makan sehat. Berikut daftar makanan tinggi protein yang ramah dompet.",
     },
   ];
 
@@ -45,7 +49,7 @@ class _HomePageState extends State<HomePage> {
   void _loadData() async {
     // 1. Ambil Profil User
     final user = await UserService.getUserData();
-    
+
     // 2. Ambil Progress Mingguan
     final progress = await UserService.getWeeklyProgress();
 
@@ -78,7 +82,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               const SizedBox(height: 50),
-              
+
               // ==========================================
               // 1. HEADER HALO (PROFIL)
               // ==========================================
@@ -91,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
-                      image: imagePath != null 
+                      image: imagePath != null
                           ? DecorationImage(
                               image: FileImage(File(imagePath!)),
                               fit: BoxFit.cover,
@@ -105,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              
+
               const SizedBox(height: 20),
 
               // ==========================================
@@ -134,14 +138,14 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             const SizedBox(width: 10),
-                            
+
                             // --- TOMBOL PENSIL (EDIT RENCANA) ---
                             GestureDetector(
                               onTap: () async {
                                 // Navigasi ke RencanaPage
                                 // 'await' menunggu user selesai mengedit & kembali
                                 await Navigator.pushNamed(context, '/rencana');
-                                
+
                                 // Setelah kembali, refresh data agar angka target terupdate
                                 _loadData();
                               },
@@ -157,18 +161,21 @@ class _HomePageState extends State<HomePage> {
                         // Text Progress (Contoh: 2/5)
                         Text(
                           "$completedCount/$weeklyTarget",
-                          style: const TextStyle(color: Colors.white, fontSize: 12),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 20),
-                    
+
                     // Lingkaran Hari 1-7
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: List.generate(7, (index) {
                         int dayNumber = index + 1; // 1 = Senin, dst.
-                        
+
                         // Logika Penentuan Status
                         bool isCompleted = completedDays.contains(dayNumber);
                         bool isToday = dayNumber == currentWeekday;
@@ -180,13 +187,13 @@ class _HomePageState extends State<HomePage> {
                         if (isCompleted) {
                           // KASUS A: SUDAH LATIHAN (API)
                           decoration = const BoxDecoration(
-                            color: Colors.white, 
+                            color: Colors.white,
                             shape: BoxShape.circle,
                           );
                           content = const Icon(
-                            Icons.local_fire_department, 
-                            color: Colors.orange, 
-                            size: 20
+                            Icons.local_fire_department,
+                            color: Colors.orange,
+                            size: 20,
                           );
                         } else if (isToday) {
                           // KASUS B: HARI INI TAPI BELUM LATIHAN (PUTIH)
@@ -204,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                         } else {
                           // KASUS C: HARI LAIN BELUM LATIHAN (GELAP)
                           decoration = BoxDecoration(
-                            color: Colors.white10, 
+                            color: Colors.white10,
                             shape: BoxShape.circle,
                           );
                           content = Text(
@@ -349,7 +356,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {}, 
+                          onTap: () {},
                           child: Row(
                             children: [
                               Text(
@@ -369,19 +376,19 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    
                     // List Berita
                     ListView.separated(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: newsList.length,
-                      separatorBuilder: (context, index) => const SizedBox(height: 15),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 15),
                       itemBuilder: (context, index) {
                         final item = newsList[index];
 
                         return InkWell(
                           onTap: () {},
+                          borderRadius: BorderRadius.circular(15),
                           child: Container(
                             padding: const EdgeInsets.all(15),
                             decoration: BoxDecoration(
@@ -407,7 +414,8 @@ class _HomePageState extends State<HomePage> {
                                 // Isi Berita
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         item["title"]!,
@@ -439,7 +447,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              
+
               const SizedBox(height: 120),
             ],
           ),

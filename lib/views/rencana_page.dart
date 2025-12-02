@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_thumb_shape.dart';
 import '../widgets/customTickMarkShape.dart';
 // Import Service untuk menyimpan data
-import '../services/user_service.dart'; 
+import '../services/user_service.dart';
 
 class RencanaPage extends StatefulWidget {
   const RencanaPage({super.key});
@@ -53,7 +53,12 @@ class _RencanaPageState extends State<RencanaPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        padding: const EdgeInsets.only(left: 40, right: 40, bottom: 30, top: 10),
+        padding: const EdgeInsets.only(
+          left: 40,
+          right: 40,
+          bottom: 30,
+          top: 10,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,12 +72,10 @@ class _RencanaPageState extends State<RencanaPage> {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            
+
             // Gambar Ilustrasi
-            Expanded(
-              child: Image.asset("assets/images/rencana.png"),
-            ),
-            
+            Expanded(child: Image.asset("assets/images/rencana.png")),
+
             Column(
               children: [
                 // Label angka besar
@@ -151,52 +154,54 @@ class _RencanaPageState extends State<RencanaPage> {
                     ],
                   ),
                 ),
-                
-                const SizedBox(height: 40),
-
-                // Tombol Simpan
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                    int target = _sliderValue.toInt() + 1;
-                    await UserService.setWeeklyTarget(target);
-
-                    if (context.mounted) {
-                      // Cek apakah bisa pop (artinya ini mode Edit dari Home)
-                      if (Navigator.canPop(context)) {
-                        // Cek apakah halaman sebelumnya adalah QuestionPage (Setup Awal)
-                        // Cara gampangnya: Langsung pushReplacement ke Main jika ini setup awal
-                        // Tapi agar aman untuk kedua kondisi (Edit & Setup), kita bisa pakai pushNamedAndRemoveUntil
-                        
-                        Navigator.pushNamedAndRemoveUntil(
-                          context, 
-                          '/main', 
-                          (route) => false // Hapus semua history, mulai fresh di Home
-                        );
-                      } 
-                    }
-                  },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF620000),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)
-                      )
-                    ),
-                    child: const Text(
-                      "Simpan Rencana",
-                      style: TextStyle(
-                        color: Colors.white, 
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16
-                      ),
-                    ),
-                  ),
-                )
               ],
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.black,
+        elevation: 0,
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+        child: SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            onPressed: () async {
+              int target = _sliderValue.toInt() + 1;
+              await UserService.setWeeklyTarget(target);
+
+              if (context.mounted) {
+                // Cek apakah bisa pop (artinya ini mode Edit dari Home)
+                if (Navigator.canPop(context)) {
+                  // Cek apakah halaman sebelumnya adalah QuestionPage (Setup Awal)
+                  // Cara gampangnya: Langsung pushReplacement ke Main jika ini setup awal
+                  // Tapi agar aman untuk kedua kondisi (Edit & Setup), kita bisa pakai pushNamedAndRemoveUntil
+
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/main',
+                    (route) =>
+                        false, // Hapus semua history, mulai fresh di Home
+                  );
+                }
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF620000),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: const Text(
+              "Simpan Rencana",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ),
         ),
       ),
     );

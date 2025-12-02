@@ -12,18 +12,9 @@ class _TipeBadanPageState extends State<TipeBadanPage> {
   int currentIndex = 0;
 
   final List<Map<String, String>> bodyTypes = [
-    {
-      "image": "assets/images/Kurus.png",
-      "label": "Kurus",
-    },
-    {
-      "image": "assets/images/Berisi.png",
-      "label": "Berisi",
-    },
-    {
-      "image": "assets/images/Sangat Berisi.png",
-      "label": "Sangat Berisi",
-    },
+    {"image": "assets/images/Kurus.png", "label": "Kurus"},
+    {"image": "assets/images/Berisi.png", "label": "Berisi"},
+    {"image": "assets/images/Sangat Berisi.png", "label": "Sangat Berisi"},
   ];
 
   @override
@@ -63,7 +54,7 @@ class _TipeBadanPageState extends State<TipeBadanPage> {
                             item["image"]!,
                             fit: BoxFit.cover,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   );
@@ -95,7 +86,7 @@ class _TipeBadanPageState extends State<TipeBadanPage> {
                     ),
                     Icon(Icons.chevron_right_rounded, color: Colors.white),
                   ],
-                )
+                ),
               ],
             ),
           ],

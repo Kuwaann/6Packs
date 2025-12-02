@@ -49,7 +49,7 @@ class _LatihanPageState extends State<LatihanPage> {
       final args = ModalRoute.of(context)!.settings.arguments as Map;
       paket = args["paket"] as WorkoutPackage;
 
-      _startTime = DateTime.now(); 
+      _startTime = DateTime.now();
       _startPrep();
       _isInit = true;
     }
@@ -120,19 +120,21 @@ class _LatihanPageState extends State<LatihanPage> {
       _isPaused = false;
     });
 
-    _startTimer(onFinished: () {
-      setState(() {
-        _exerciseIndex++;
-      });
-      _startNextExercise();
-    });
+    _startTimer(
+      onFinished: () {
+        setState(() {
+          _exerciseIndex++;
+        });
+        _startNextExercise();
+      },
+    );
   }
 
   // PERBAIKAN LOGIC FINISH
   Future<void> _finishWorkout() async {
     _endTime = DateTime.now();
     _disposeVideo();
-    
+
     // Hitung Statistik
     final duration = _endTime!.difference(_startTime!).inSeconds;
     int baseCal = 0;
@@ -274,7 +276,9 @@ class _LatihanPageState extends State<LatihanPage> {
     final movement = paket.movements[_exerciseIndex];
     final bool isExercise = _phase == WorkoutPhase.exercise;
     final bool isTimedExercise = isExercise && movement.type == 'detik';
-    final String titleText = isExercise ? movement.name : (_phase == WorkoutPhase.rest ? "ISTIRAHAT" : "PERSIAPAN");
+    final String titleText = isExercise
+        ? movement.name
+        : (_phase == WorkoutPhase.rest ? "Istirahat" : "Persiapan");
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -296,19 +300,21 @@ class _LatihanPageState extends State<LatihanPage> {
               const Icon(Icons.star, color: Colors.white, size: 14)
             else if (paket.level == 'Pro')
               const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.star, color: Colors.white, size: 14),
-                    Icon(Icons.star, color: Colors.white, size: 14)
-                  ])
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.star, color: Colors.white, size: 14),
+                  Icon(Icons.star, color: Colors.white, size: 14),
+                ],
+              )
             else
               const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.star, color: Colors.white, size: 14),
-                    Icon(Icons.star, color: Colors.white, size: 14),
-                    Icon(Icons.star, color: Colors.white, size: 14)
-                  ]),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.star, color: Colors.white, size: 14),
+                  Icon(Icons.star, color: Colors.white, size: 14),
+                  Icon(Icons.star, color: Colors.white, size: 14),
+                ],
+              ),
           ],
         ),
         leading: IconButton(
@@ -321,14 +327,19 @@ class _LatihanPageState extends State<LatihanPage> {
                 content: const Text("Progress latihan Anda akan hilang."),
                 actions: [
                   TextButton(
-                      onPressed: () => Navigator.pop(ctx),
-                      child: const Text("Batal")),
+                    onPressed: () => Navigator.pop(ctx),
+                    child: const Text("Batal"),
+                  ),
                   TextButton(
-                      onPressed: () {
-                        Navigator.pop(ctx);
-                        Navigator.pop(context);
-                      },
-                      child: const Text("Keluar", style: TextStyle(color: Colors.red))),
+                    onPressed: () {
+                      Navigator.pop(ctx);
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      "Keluar",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
                 ],
               ),
             );
@@ -337,140 +348,215 @@ class _LatihanPageState extends State<LatihanPage> {
         actions: const [SizedBox(width: kToolbarHeight)],
       ),
 
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // BAGIAN ATAS
-            Column(
-              spacing: 20,
-              children: [
-                // Progress Bar
-                Column(
-                  spacing: 10,
-                  children: [
-                    Text(
-                      "${_exerciseIndex + 1} dari ${paket.movements.length}",
-                      style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
-                    ),
-                    Row(
-                      children: List.generate(paket.movements.length, (index) {
-                        return Expanded(
-                          child: Container(
-                            height: 4,
-                            margin: const EdgeInsets.symmetric(horizontal: 2),
-                            decoration: BoxDecoration(
-                              color: index <= _exerciseIndex ? Colors.white : Colors.white24,
-                              borderRadius: BorderRadius.circular(2),
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
-                  ],
-                ),
-
-                // Judul
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        titleText,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+      body: SafeArea(
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // BAGIAN ATAS
+              Column(
+                spacing: 20,
+                children: [
+                  // Progress Bar
+                  Column(
+                    spacing: 10,
+                    children: [
+                      Text(
+                        "${_exerciseIndex + 1} dari ${paket.movements.length}",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const Icon(Icons.info_outline, color: Colors.amber, size: 24),
-                  ],
-                ),
-
-                // Video
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: AspectRatio(
-                    aspectRatio: 16 / 9,
-                    child: Container(
-                      color: Colors.grey[900],
-                      child: isExercise
-                          ? (_isLoadingVideo
-                              ? const Center(child: CircularProgressIndicator(color: Colors.white))
-                              : _isVideoInitialized
-                                  ? VideoPlayer(_videoController!)
-                                  : const Center(child: Icon(Icons.videocam_off, color: Colors.white54, size: 40)))
-                          : Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(_phase == WorkoutPhase.rest ? Icons.self_improvement : Icons.accessibility_new, color: Colors.white24, size: 50),
-                                  const SizedBox(height: 10),
-                                  Text(_phase == WorkoutPhase.rest ? "Ambil Nafas..." : "Siap-siap!", style: const TextStyle(color: Colors.white54))
-                                ],
+                      Row(
+                        children: List.generate(paket.movements.length, (
+                          index,
+                        ) {
+                          return Expanded(
+                            child: Container(
+                              height: 4,
+                              margin: const EdgeInsets.symmetric(horizontal: 2),
+                              decoration: BoxDecoration(
+                                color: index <= _exerciseIndex
+                                    ? Colors.white
+                                    : Colors.white24,
+                                borderRadius: BorderRadius.circular(2),
                               ),
                             ),
+                          );
+                        }),
+                      ),
+                    ],
+                  ),
+
+                  // Judul
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          titleText,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const Icon(
+                        Icons.info_outline,
+                        color: Colors.amber,
+                        size: 24,
+                      ),
+                    ],
+                  ),
+
+                  // Video
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: Container(
+                        color: Colors.grey[900],
+                        child: isExercise
+                            ? (_isLoadingVideo
+                                  ? const Center(
+                                      child: CircularProgressIndicator(
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  : _isVideoInitialized
+                                  ? VideoPlayer(_videoController!)
+                                  : const Center(
+                                      child: Icon(
+                                        Icons.videocam_off,
+                                        color: Colors.white54,
+                                        size: 40,
+                                      ),
+                                    ))
+                            : Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      _phase == WorkoutPhase.rest
+                                          ? Icons.self_improvement
+                                          : Icons.accessibility_new,
+                                      color: Colors.white24,
+                                      size: 50,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      _phase == WorkoutPhase.rest
+                                          ? "Ambil Nafas..."
+                                          : "Siap-siap!",
+                                      style: const TextStyle(
+                                        color: Colors.white54,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                      ),
                     ),
                   ),
-                ),
 
-                // Deskripsi
-                if (isExercise && movement.type == 'repetisi')
-                  Text("Lakukan ${movement.amount} Repetisi", textAlign: TextAlign.center, style: const TextStyle(color: Colors.white70, fontSize: 18, fontWeight: FontWeight.w500)),
-                if (_phase == WorkoutPhase.rest)
-                   Text("Selanjutnya: ${paket.movements[_exerciseIndex+1].name}", textAlign: TextAlign.center, style: const TextStyle(color: Colors.white54)),
-              ],
-            ),
-
-            // BAGIAN TENGAH (Timer)
-            Text(
-              (isExercise && movement.type == 'repetisi') ? "Semangat!" : _formatTimer(_countdown),
-              style: TextStyle(
-                color: (isExercise && movement.type == 'repetisi') ? Colors.white24 : (_countdown <= 3 ? Colors.redAccent : Colors.white),
-                fontSize: 50,
-                fontWeight: FontWeight.bold,
-                fontFeatures: const [FontFeature.tabularFigures()],
+                  // Deskripsi
+                  if (isExercise && movement.type == 'repetisi')
+                    Text(
+                      "Lakukan ${movement.amount} Repetisi",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  if (_phase == WorkoutPhase.rest)
+                    Text(
+                      "Selanjutnya: ${paket.movements[_exerciseIndex + 1].name}",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(color: Colors.white54),
+                    ),
+                ],
               ),
-            ),
 
-            // BAGIAN BAWAH (Kontrol)
-            Column(
-              spacing: 15,
-              children: [
-                if (_phase != WorkoutPhase.prep)
-                  SizedBox(
-                    width: double.infinity,
-                    height: 55,
-                    child: ElevatedButton(
-                      onPressed: _togglePause,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF620000),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                      ),
-                      child: Text(_isPaused ? "Resume" : "Pause", style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)),
-                    ),
-                  ),
+              // BAGIAN TENGAH (Timer)
+              Text(
+                (isExercise && movement.type == 'repetisi')
+                    ? "Semangat!"
+                    : _formatTimer(_countdown),
+                style: TextStyle(
+                  color: (isExercise && movement.type == 'repetisi')
+                      ? Colors.white24
+                      : (_countdown <= 3 ? Colors.redAccent : Colors.white),
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  fontFeatures: const [FontFeature.tabularFigures()],
+                ),
+              ),
 
-                if (!isTimedExercise)
-                  SizedBox(
-                    width: double.infinity,
-                    height: 55,
-                    child: ElevatedButton(
-                      onPressed: _skipCurrentPhase,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+              // BAGIAN BAWAH (Kontrol)
+              Column(
+                spacing: 15,
+                children: [
+                  if (_phase != WorkoutPhase.prep)
+                    SizedBox(
+                      width: double.infinity,
+                      height: 55,
+                      child: ElevatedButton(
+                        onPressed: _togglePause,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF620000),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        child: Text(
+                          _isPaused ? "Resume" : "Pause",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
-                      child: Text(isExercise ? "Selesai / Lanjut" : "Skip", style: const TextStyle(color: Color(0xFF620000), fontWeight: FontWeight.w700, fontSize: 16)),
                     ),
-                  )
-                else
-                  const SizedBox(height: 55),
-              ],
-            )
-          ],
+
+                  if (!isTimedExercise)
+                    SizedBox(
+                      width: double.infinity,
+                      height: 55,
+                      child: ElevatedButton(
+                        onPressed: _skipCurrentPhase,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        child: Text(
+                          isExercise ? "Lanjut" : "Lewati",
+                          style: const TextStyle(
+                            color: Color(0xFF620000),
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    )
+                  else
+                    const SizedBox(height: 55),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -481,7 +567,7 @@ class _LatihanPageState extends State<LatihanPage> {
   // ==========================================
   Widget _buildFinishedView() {
     final duration = _endTime!.difference(_startTime!).inSeconds;
-    
+
     int baseCal = 0;
     if (paket.level == "Noob") baseCal = 5;
     if (paket.level == "Pro") baseCal = 8;
@@ -490,61 +576,82 @@ class _LatihanPageState extends State<LatihanPage> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Container(
-        padding: const EdgeInsets.all(30),
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.emoji_events, color: Colors.amber, size: 100),
-            const SizedBox(height: 20),
-            Text(
-              "SELAMAT!",
-              style: TextStyle(color: Colors.blue[400], fontSize: 28, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              "Paket ${paket.level} Selesai",
-              style: const TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(height: 50),
-            
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildStatItem(paket.movements.length.toString(), "Latihan"),
-                  Container(width: 1, height: 40, color: Colors.white24),
-                  _buildStatItem("$totalCalories", "Kkal"),
-                  Container(width: 1, height: 40, color: Colors.white24),
-                  _buildStatItem(_formatTotalDuration(duration), "Waktu"),
-                ],
-              ),
-            ),
-
-            const Spacer(),
-
-            SizedBox(
-              width: double.infinity,
-              height: 55,
-              child: ElevatedButton(
-                onPressed: () {
-                  // PERBAIKAN: Gunakan pushNamedAndRemoveUntil agar tumpukan history bersih
-                  Navigator.pushNamedAndRemoveUntil(context, '/homepage', (route) => false);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0089CE),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.all(30),
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.emoji_events, color: Colors.amber, size: 100),
+              const SizedBox(height: 20),
+              Text(
+                "Selamat!",
+                style: TextStyle(
+                  color: Color(0xFFDE0000),
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: const Text("Kembali ke Beranda", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
               ),
-            ),
-          ],
+              const SizedBox(height: 10),
+              Text(
+                "Paket ${paket.level} Selesai",
+                style: const TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              const SizedBox(height: 50),
+
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildStatItem(
+                      paket.movements.length.toString(),
+                      "Latihan",
+                    ),
+                    Container(width: 1, height: 40, color: Colors.white24),
+                    _buildStatItem("$totalCalories", "Kkal"),
+                    Container(width: 1, height: 40, color: Colors.white24),
+                    _buildStatItem(_formatTotalDuration(duration), "Waktu"),
+                  ],
+                ),
+              ),
+
+              const Spacer(),
+
+              SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // PERBAIKAN: Gunakan pushNamedAndRemoveUntil agar tumpukan history bersih
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/homepage',
+                      (route) => false,
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF620000),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  child: const Text(
+                    "Kembali ke Beranda",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -553,9 +660,19 @@ class _LatihanPageState extends State<LatihanPage> {
   Widget _buildStatItem(String value, String label) {
     return Column(
       children: [
-        Text(value, style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+        Text(
+          value,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         const SizedBox(height: 5),
-        Text(label, style: const TextStyle(color: Colors.white54, fontSize: 12)),
+        Text(
+          label,
+          style: const TextStyle(color: Colors.white54, fontSize: 12),
+        ),
       ],
     );
   }
